@@ -1,0 +1,165 @@
+.Movie {
+    padding: 90px 10px 0px;
+}
+
+.search_movie {
+    min-width: 20%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px 0 0 10px;
+    outline: none;
+}
+
+.btn_search_movie {
+    padding: 12px;
+    border: none;
+    background-color: red;
+    border-radius: 0px 10px 10px 0;
+    color: white;
+    font-weight: 800;
+}
+
+.container_movie {
+    min-width: calc(100% - 1em);
+    padding: 30px 0px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2em;
+}
+
+.info_movie {
+    max-width: 20%;
+    transition: transform .5s ease;
+}
+
+.info_movie:hover {
+    transform: scale(1.1);
+}
+
+.releaseDate_movie,
+.title_movie {
+    font-size: 15px;
+    max-width: 90%;
+    color: black;
+}
+
+.img_movie {
+    width: 100%;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.749);
+}
+
+.info_bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2em;
+}
+
+.btn_favorite {
+    padding: 7px 9px;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 0, 0, 0.807);
+    background-color: rgba(154, 154, 154, 0);
+    transition: transform .3s ease;
+}
+
+.btn_favorite:hover {
+    border: 3px solid rgb(0, 0, 0);
+    color: black;
+}
+
+.btn_favorite:active {
+    transform: scale(1.2);
+    border: 3px solid rgba(44, 39, 39, 0.716);
+    background-color: rgba(196, 101, 101, 0.352);
+}
+
+.icon_check,
+.icon_plus {
+    font-size: 18px;
+    color: black;
+}
+
+.icons {
+    display: flex;
+    gap: .5em;
+}
+
+.icon_play {
+    padding: 9px 10px;
+    border-radius: 50%;
+    border: 2px solid black;
+    color: black;
+    transition: transform .3s ease;
+}
+
+.icon_play:hover {
+    transform: scale(1.05);
+    border: 3px solid black;
+}
+
+@media (max-width: 768px) {
+    .container_movie {
+        justify-content: center;
+    }
+
+    .info_movie {
+        max-width: calc(30% - 1em);
+    }
+
+    .btn_favorite {
+        padding: 10px;
+    }
+
+    .info_bottom {
+        gap: 1em;
+    }
+
+    .releaseDate_movie {
+        font-size: 10px;
+        font-weight: 800;
+    }
+
+    .icons {
+        width: 100px;
+    }
+}
+
+@media (max-width: 568px) {
+    .info_bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 0;
+    }
+
+    .btn_favorite {
+        padding: 10px;
+    }
+
+    .releaseDate_movie {
+        font-size: 15px;
+    }
+
+    .icon_check,
+    .icon_plus {
+        font-size: 15px;
+    }
+
+    .icon_play {
+        min-width: 20px;
+        min-height: 20px;
+    }
+
+}
+
+@media (max-width: 430px) {
+    .btn_favorite {
+        padding: 13px 14px;
+    }
+
+    .icon_play {
+        padding: 10px;
+    }
+}

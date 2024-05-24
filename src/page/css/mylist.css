@@ -1,0 +1,19 @@
+.MyList {
+    padding: 90px 0 0 20px;
+    color: rgba(212, 29, 29, 0.865);
+}
+
+.favorites {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.container_favorite {
+    margin-bottom: 20px;
+}
+
+.container_favorite img {
+    width: 200px;
+    margin-right: 10px;
+}
