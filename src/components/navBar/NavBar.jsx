@@ -18,7 +18,7 @@ const NavBar = () => {
 
   return (
     <nav className="navbar">
-      <img src={img} alt="" />
+      <img src={img} alt="Logo" />
       <ul className={showMenu ? 'show' : ''}>
         <li>
           <Link to="/" className="nav_link" onClick={closeMenu}>Movies</Link>
@@ -30,7 +30,7 @@ const NavBar = () => {
           <Link to="/my-list" className="nav_link" onClick={closeMenu}>My List</Link>
         </li>
       </ul>
-      <FontAwesomeIcon icon={faBars} className="menu-icon" onClick={toggleMenu} />
+      <FontAwesomeIcon icon={faBars} className="menu_icon" onClick={toggleMenu} />
       {showMenu && <div className="overlay" onClick={closeMenu}></div>}
     </nav>
   );

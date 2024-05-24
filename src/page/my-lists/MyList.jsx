@@ -19,7 +19,7 @@ const MyList = () => {
         ) : (
           favorites.map((item) => (
             <div className="container_favorite" key={item.id}>
-              <Link to={`/movie/${item.id}`}>
+              <Link to={`/details/movie/${item.id}`}>
                 <img src={'https://image.tmdb.org/t/p/w500' + item.poster_path} alt={item.title} />
               </Link>
             </div>

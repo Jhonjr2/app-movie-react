@@ -1,13 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
-import '../css/detailView.css'; 
+import '../css/detailView.css';
+import { faCheck, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const DetailsSerie = () => {
-  const { id } = useParams(); 
+  const { id } = useParams();
   const [series, setSeries] = useState(null);
   const [otherSeries, setOtherSeries] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const toggleFavoritSerie = (series) => {
+    const storedFavorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+    const index = storedFavorites.findIndex((fav) => fav.id === series.id);
+    const updatedFavorites = [...storedFavorites];
+    if (index === -1) {
+      updatedFavorites.push(series);
+    } else {
+      updatedFavorites.splice(index, 1);
+    }
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    setFavorites(updatedFavorites);
+  };
+
+  const [favorites, setFavorites] = useState([]);
+
+  useEffect(() => {
+    if (localStorage.getItem('favorites')) {
+      setFavorites(JSON.parse(localStorage.getItem('favorites')));
+    }
+  }, []);
+
+  const isFavoriteSeries = (seriesId) => {
+    return favorites.some((fav) => fav.id === seriesId);
+  };
 
   const formatRating = (rating) => {
     return rating.toFixed(1);
@@ -68,6 +95,20 @@ const DetailsSerie = () => {
               <p className="releaseDate_detailView">{formatDate(series.first_air_date)}</p>
             </div>
             <p className="description_detailView">{series.overview}</p>
+            <div className='container_addList'>
+              <button
+                className="btn_favorite"
+                title="Add to favorite"
+                onClick={() => toggleFavoritSerie(series)}
+              >
+                {isFavoriteSeries(series.id) ? (
+                  <FontAwesomeIcon className="icon_check" icon={faCheck} />
+                ) : (
+                  <FontAwesomeIcon className="icon_plus" icon={faPlus} />
+                )}
+              </button>
+              <h1>Add to my list </h1>
+            </div>
           </div>
         </div>
       ) : (

@@ -1,147 +1,156 @@
 .Serie {
-    padding: 90px 40px 0px;
-  }
-  
+  padding: 90px 40px 0px;
+}
+
+.search_container,
+.text_welcome {
+  padding: 20px 30px;
+}
+
+.info_serie a {
+  outline: none;
+  text-decoration: none;
+}
+
+.container_serie {
+  min-width: calc(100% - 1em);
+  padding: 30px 0px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+
+.search_series {
+  min-width: 20%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px 0 0 10px;
+}
+
+.btn_search_series {
+  padding: 12px;
+  border: none;
+  background-color: red;
+  border-radius: 0px 10px 10px 0;
+  color: white;
+  font-weight: 800;
+}
+
+.info_serie {
+  max-width: 200px;
+  transition: transform .5s ease;
+}
+
+.info_serie:hover {
+  transform: scale(1.1);
+}
+
+.releaseDate_serie,
+.title_serie {
+  font-size: 15px;
+  max-width: 100%;
+  color: black;
+}
+
+.img_serie {
+  width: 100%;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.749);
+}
+
+.info_bottom {
+  display: flex;
+  gap: 4.5em;
+}
+
+.btn_favoriteSerie {
+  min-width: 50%;
+  height: 6vh;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.582);
+  background-color: rgba(154, 154, 154, 0);
+  transition: transform .3s ease;
+}
+
+.btn_favoriteSerie:hover {
+  border: 2px solid rgb(0, 0, 0);
+  color: black;
+}
+
+.btn_favoriteSerie:active {
+  transform: scale(1.2);
+  border: 3px solid rgba(44, 39, 39, 0.716);
+  background-color: rgba(196, 101, 101, 0.352);
+}
+
+.icon_check,
+.icon_plus {
+  font-size: 18px;
+  color: black;
+}
+
+.iconsSerie {
+  display: flex;
+  gap: .5em;
+}
+
+.icon_play {
+  min-width: 13px;
+  height: 2vh;
+  padding: 10px;
+  border-radius: 50%;
+  border: 2px solid black;
+  color: black;
+  transition: transform .3s ease;
+}
+
+.icon_play:hover {
+  transform: scale(1.05);
+  border: 3px solid black;
+}
+
+@media (max-width: 768px) {
   .container_serie {
-    min-width: calc(100% - 1em);
-    padding: 30px 0px;
-    display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 2em;
   }
-  
-  .search_series {
-    min-width: 20%;
-    padding: 12px;
-    border: none;
-    border-radius: 10px 0 0 10px;
-  }
-  
-  .btn_search_series {
-    padding: 12px;
-    border: none;
-    background-color: red;
-    border-radius: 0px 10px 10px 0;
-    color: white;
-    font-weight: 800;
-  }
-  
+
   .info_serie {
-    max-width: 200px;
-    transition: transform .5s ease;
+    max-width: calc(30% - 1em);
   }
-  
-  .info_serie:hover {
-    transform: scale(1.1);
+
+  .btn_favoriteSerie {
+    min-width: 40px;
+    height: 5.8vh;
   }
-  
-  .releaseDate_serie,
-  .title_serie {
-    font-size: 15px;
-    max-width: 100%;
-    color: black;
-  }
-  
-  .img_serie {
-    width: 100%;
-    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.749);
-  }
-  
+
   .info_bottom {
     display: flex;
-    gap: 4.5em;
+    flex-direction: column;
+    gap: 1em;
   }
-  
-  .btn_favoriteSerie {
-    min-width: 50%;
-    height: 6vh;
-    border-radius: 50%;
-    border: 2px solid rgba(0, 0, 0, 0.582);
-    background-color: rgba(154, 154, 154, 0);
-    transition: transform .3s ease;
+
+  .releaseDate_serie {
+    font-size: 10px;
+    font-weight: 800;
   }
-  
-  .btn_favoriteSerie:hover {
-    border: 2px solid rgb(0, 0, 0);
-    color: black;
-  }
-  
-  .btn_favoriteSerie:active {
-    transform: scale(1.2);
-    border: 3px solid rgba(44, 39, 39, 0.716);
-    background-color: rgba(196, 101, 101, 0.352);
-  }
-  
-  .icon_check,
-  .icon_plus {
-    font-size: 18px;
-    color: black;
-  }
-  
+
   .iconsSerie {
+    width: 100px;
+  }
+}
+
+@media (max-width: 568px) {
+  .info_bottom {
     display: flex;
-    gap: .5em;
+    gap: 0;
   }
-  
-  .icon_play {
-    min-width: 13px;
-    height: 2vh;
-    padding: 10px;
-    border-radius: 50%;
-    border: 2px solid black;
-    color: black;
-    transition: transform .3s ease;
+
+  .releaseDate_serie {
+    font-size: 9px;
   }
-  
-  .icon_play:hover {
-    transform: scale(1.05);
-    border: 3px solid black;
+
+  .btn_favoriteSerie {
+    width: 1px;
+    height: 5.7vh;
   }
-  
-  @media (max-width: 768px) {
-    .container_serie {
-      justify-content: center;
-    }
-  
-    .info_serie {
-      max-width: calc(30% - 1em);
-    }
-  
-    .btn_favoriteSerie {
-      min-width: 40px;
-      height: 5.8vh;
-    }
-  
-    .info_bottom {
-      display: flex;
-      flex-direction: column;
-      gap: 1em;
-    }
-  
-    .releaseDate_serie {
-      font-size: 10px;
-      font-weight: 800;
-    }
-  
-    .iconsSerie {
-      width: 100px;
-    }
-  }
-  
-  @media (max-width: 568px) {
-    .info_bottom {
-      display: flex;
-      gap: 0;
-    }
-  
-    .releaseDate_serie {
-      font-size: 9px;
-    }
-  
-    .btn_favoriteSerie {
-      width: 1px;
-      height: 5.7vh;
-    }
-  }
-  
+}

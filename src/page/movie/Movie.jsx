@@ -8,7 +8,6 @@ import '../css/movie.css';
 const Movie = () => {
   const [allMovies, setAllMovies] = useState([]);
   const [displayedMovies, setDisplayedMovies] = useState([]);
-  const [selectedMovie, setSelectedMovie] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
@@ -21,9 +20,11 @@ const Movie = () => {
 
   const searchMovies = () => {
     const searchTermLowerCase = searchTerm.toLowerCase();
-    const filteredMovies = allMovies.filter(movie =>
-      movie.title.toLowerCase().includes(searchTermLowerCase)
-    );
+    const filteredMovies = allMovies.filter(movie => {
+      const movieYear = new Date(movie.release_date).getFullYear().toString();
+      return movie.title.toLowerCase().includes(searchTermLowerCase) ||
+        movieYear.includes(searchTermLowerCase);
+    });
     setDisplayedMovies(filteredMovies);
   };
 
@@ -84,7 +85,7 @@ const Movie = () => {
 
   return (
     <div className="Movie">
-      <h1>Movie</h1>
+      <h1 className="text_welcome">Welcome, you will find the best movies. Explore now.</h1>
       <div className="search_container">
         <input
           className="search_movie"
@@ -102,7 +103,7 @@ const Movie = () => {
       </div>
       {isLoading && <p>Loading...</p>}
       {error && <p>{error}</p>}
-      {!isLoading && !error && !selectedMovie && (
+      {!isLoading && !error && (
         <div className="container_movie">
           {displayedMovies.map((movie) => (
             <div className="info_movie" key={movie.id}>

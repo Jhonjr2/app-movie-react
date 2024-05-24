@@ -19,7 +19,7 @@ function App() {
           <Route path='/series' element={<Series />} />
           <Route path='/my-list' element={<MyList />} />
           <Route path='/details/movie/:id' element={<DetailsMovie />} />
-          <Route path='/details/serie/:id' element={<DetailsSerie />} />
+          <Route path='/details/series/:id' element={<DetailsSerie />} />
         </Routes>
       </div>
       <div className="footer_layout">

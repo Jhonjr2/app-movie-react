@@ -1,25 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import '../css/detailView.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faPlus } from '@fortawesome/free-solid-svg-icons';
+import '../css/detailView.css';
 
 const DetailsMovie = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
   const [otherMovies, setOtherMovies] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
         const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}`, {
           params: {
-            api_key: '53f3e1d3fbfed79960a6076096d187b1'
-          }
+            api_key: '53f3e1d3fbfed79960a6076096d187b1',
+          },
         });
         setMovie(response.data);
       } catch (error) {
         console.error('Error fetching movie details:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -28,20 +33,40 @@ const DetailsMovie = () => {
         const response = await axios.get(`https://api.themoviedb.org/3/movie/popular`, {
           params: {
             api_key: '53f3e1d3fbfed79960a6076096d187b1',
-            page: 1
-          }
+            page: 1,
+          },
         });
         setOtherMovies(response.data.results.slice(0, 7));
       } catch (error) {
         console.error('Error fetching other movies:', error);
-      } finally {
-        setLoading(false);
       }
     };
 
     fetchMovieDetails();
     fetchOtherMovies();
   }, [id]);
+
+  useEffect(() => {
+    const storedFavorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+    setFavorites(storedFavorites);
+  }, []);
+
+  const toggleFavoriteMovie = (movie) => {
+    const storedFavorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+    const index = storedFavorites.findIndex((fav) => fav.id === movie.id);
+    let updatedFavorites = [...storedFavorites];
+    if (index === -1) {
+      updatedFavorites.push(movie);
+    } else {
+      updatedFavorites.splice(index, 1);
+    }
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    setFavorites(updatedFavorites);
+  };
+
+  const isFavoriteMovie = (movieId) => {
+    return favorites.some((fav) => fav.id === movieId);
+  };
 
   const formatRating = (rating) => {
     return rating.toFixed(1);
@@ -71,6 +96,20 @@ const DetailsMovie = () => {
             <p className="releaseDate_detailView">{formatDate(movie.release_date)}</p>
           </div>
           <p className="description_detailView">{movie.overview}</p>
+          <div className='container_addList'>
+            <button
+              className="btn_favorite"
+              onClick={() => toggleFavoriteMovie(movie)}
+              title={isFavoriteMovie(movie.id) ? 'Remove from favorites' : 'Add to favorites'}
+            >
+              {isFavoriteMovie(movie.id) ? (
+                <FontAwesomeIcon className="icon_check" icon={faCheck} />
+              ) : (
+                <FontAwesomeIcon className="icon_plus" icon={faPlus} />
+              )}
+            </button>
+            <h1>Add to my list </h1>
+          </div>
         </div>
       </div>
       <div className="container_other">

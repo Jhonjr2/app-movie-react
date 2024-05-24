@@ -2,6 +2,16 @@
     padding: 90px 10px 0px;
 }
 
+.search_container,
+.text_welcome {
+    padding: 10px 30px;
+}
+
+.info_movie a {
+    outline: none;
+    text-decoration: none;
+}
+
 .search_movie {
     min-width: 20%;
     padding: 12px;

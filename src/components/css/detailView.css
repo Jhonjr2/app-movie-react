@@ -59,6 +59,26 @@
     filter: brightness(1.2);
 }
 
+.container_addList {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.container_addList h1{
+    font-size: 16px;
+}
+
+.container_addList .btn_favorite{
+  background-color: rgba(36, 35, 35, 0.841);
+  border: 1px solid white;
+}
+
+.container_addList .icon_check,
+.container_addList .icon_plus {
+    color: white;
+}
+
 .text_Others {
     color: white;
 }
