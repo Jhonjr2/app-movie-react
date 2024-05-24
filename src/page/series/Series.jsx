@@ -100,7 +100,7 @@ const Series = () => {
       <div className="container_serie">
         {displayedSeries.map((series) => (
           <div className="info_serie" key={series.id}>
-            <Link to={`/details/serie/${series.id}`}>
+            <Link to={`/details/series/${series.id}`}>
               <img className="img_serie" src={'https://image.tmdb.org/t/p/w500' + series.poster_path} alt={series.name} />
               <h2 className="title_serie">{series.name}</h2>
             </Link>
@@ -114,7 +114,7 @@ const Series = () => {
                 >
                   {isFavorite(series.id) ? <FontAwesomeIcon className='icon_check' icon={faCheck} /> : <FontAwesomeIcon className='icon_plus' icon={faPlus} />}
                 </button>
-                <Link to={`/details/serie/${series.id}`} title="Play">
+                <Link to={`/details/series/${series.id}`} title="Play">
                   <FontAwesomeIcon className='icon_play' icon={faPlay} />
                 </Link>
               </div>
